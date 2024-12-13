@@ -1,0 +1,8 @@
+{
+  "name": "@repo/odm-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./odm.config.ts"
+  }
+}

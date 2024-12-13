@@ -1,20 +1,23 @@
-import { AppSidebar, Menu } from "./app-sidebar";
+import { AppMenu, AppSidebar } from "./app-sidebar";
+import { ThemeProvider } from "./theme-provider";
 import { SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 
 export default function Layout({
   children,
-  menus,
+  appMenus,
 }: {
   children: React.ReactNode;
-  menus: Menu[];
+  appMenus: AppMenu[];
 }) {
   return (
-    <SidebarProvider>
-      <AppSidebar menus={menus}/>
-      <main>
-        <SidebarTrigger />
-        {children}
-      </main>
-    </SidebarProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <SidebarProvider>
+        <AppSidebar appMenus={appMenus} />
+        <main>
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
+    </ThemeProvider>
   );
 }

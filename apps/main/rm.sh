@@ -1,0 +1,1 @@
+docker stop microfe-main && docker rm microfe-main

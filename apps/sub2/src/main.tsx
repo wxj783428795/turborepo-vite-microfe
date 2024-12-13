@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     }
   ],
   {
-    basename: qiankunWindow.__POWERED_BY_QIANKUN__ ? "/sub1" : "/",
+    basename: qiankunWindow.__POWERED_BY_QIANKUN__ ? "/sub2" : "/",
   }
 );
 

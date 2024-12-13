@@ -1,7 +1,7 @@
-import { ChevronDown } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -9,13 +9,20 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "./ui/sidebar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+
+import { AppSwitcher } from "./app-switcher";
+import { useState } from "react";
+import { ModeToggle } from "./mode-toggle";
+
+export type AppMenu = {
+  url: string;
+  name: string;
+  logo: React.ComponentType;
+  brief: string;
+  menus: Menu[];
+};
 
 export type Menu = {
   title: string;
@@ -23,43 +30,31 @@ export type Menu = {
   icon: React.ComponentType;
 };
 
-export function AppSidebar({ menus }: { menus: Menu[] }) {
+export function AppSidebar({ appMenus }: { appMenus: AppMenu[] }) {
+  const [activeApp, setActiveApp] = useState(appMenus[0]);
+  console.log("activeApp", activeApp);
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
-                  Select Workspace
-                  <ChevronDown className="ml-auto" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
-                <DropdownMenuItem>
-                  <span>Acme Inc</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span>Acme Corp.</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <AppSwitcher
+          apps={appMenus}
+          activeApp={activeApp}
+          setActiveApp={setActiveApp}
+        />
       </SidebarHeader>
+      <SidebarSeparator />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>menus</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menus.map((item) => (
+              {activeApp.menus.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <span onClick={() => history.pushState({}, "", item.url)}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -67,6 +62,9 @@ export function AppSidebar({ menus }: { menus: Menu[] }) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <ModeToggle />
+      </SidebarFooter>
     </Sidebar>
   );
 }

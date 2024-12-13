@@ -1,0 +1,1 @@
+docker run --name microfe-main -p 3000:80 -d -v ./conf/nginx.conf:/etc/nginx/conf.d/nginx.conf microfe-main:latest

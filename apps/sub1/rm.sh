@@ -1,0 +1,1 @@
+docker stop microfe-sub1 && docker rm microfe-sub1

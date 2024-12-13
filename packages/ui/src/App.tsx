@@ -1,15 +1,21 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Text } from "./components/ui/text";
+
+import Layout from "#components/layout.tsx";
+import { Calendar, Home, Inbox, Search, Settings } from "#components/icons";
+const items = [
+  {
+    title: "子应用1",
+    url: "/sub1",
+    icon:Home
+  },
+ 
+];
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <Button>Click me</Button>
-      <Text />
-    </>
+    <Layout menus={items}>
+      <div>123</div>
+    </Layout>
   );
 }
 
