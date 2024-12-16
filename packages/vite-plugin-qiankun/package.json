@@ -1,0 +1,27 @@
+{
+  "name": "@repo/vite-plugin-qiankun",
+  "version": "1.0.15",
+  "description": "",
+  "type": "module" ,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "vite-plugin-qiankun": "^1.0.15"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./helper": {
+      "types": "./src/helper.ts",
+      "default": "./dist/helper.js"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -12,5 +12,10 @@
     "turbo": "^2.3.0"
   },
   "packageManager": "pnpm@8.15.6",
-  "name": "with-vite"
+  "name": "with-vite",
+  "pnpm": {
+    "patchedDependencies": {
+      "vite-plugin-qiankun@1.0.15": "patches/vite-plugin-qiankun@1.0.15.patch"
+    }
+  }
 }

@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import {
   renderWithQiankun,
   qiankunWindow,
-} from "vite-plugin-qiankun/dist/helper";
+} from "@repo/vite-plugin-qiankun/helper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom";
 import Page1 from "./pages/page1.tsx";
@@ -18,7 +18,7 @@ const router = createBrowserRouter(
     {
       path: "/menu1",
       element: <Page1 />,
-    }
+    },
   ],
   {
     basename: qiankunWindow.__POWERED_BY_QIANKUN__ ? "/sub2" : "/",

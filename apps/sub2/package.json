@@ -5,15 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:test": "vite build -m test && sh build.sh",
+    "build:prod": "vite build -m production && sh build.sh",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "sh build.sh"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "vite-plugin-qiankun": "^1.0.15"
+    "@repo/vite-plugin-qiankun": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

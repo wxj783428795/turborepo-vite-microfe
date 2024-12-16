@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  vite-plugin-qiankun@1.0.15:
+    hash: bkqp6e2mb6oll2e4tkjbxuryee
+    path: patches/vite-plugin-qiankun@1.0.15.patch
+
 importers:
 
   .:
@@ -75,6 +80,12 @@ importers:
 
   apps/sub1:
     dependencies:
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@repo/vite-plugin-qiankun':
+        specifier: workspace:*
+        version: link:../../packages/vite-plugin-qiankun
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -86,7 +97,7 @@ importers:
         version: 6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       vite-plugin-qiankun:
         specifier: ^1.0.15
-        version: 1.0.15(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0))
+        version: 1.0.15(patch_hash=bkqp6e2mb6oll2e4tkjbxuryee)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0))
     devDependencies:
       '@eslint/js':
         specifier: ^9.13.0
@@ -124,6 +135,9 @@ importers:
 
   apps/sub2:
     dependencies:
+      '@repo/vite-plugin-qiankun':
+        specifier: workspace:*
+        version: link:../../packages/vite-plugin-qiankun
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -133,9 +147,6 @@ importers:
       react-router-dom:
         specifier: ^6.28.0
         version: 6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      vite-plugin-qiankun:
-        specifier: ^1.0.15
-        version: 1.0.15(typescript@5.6.3)(vite@6.0.3(@types/node@22.9.0)(jiti@1.21.6)(yaml@2.6.0))
     devDependencies:
       '@eslint/js':
         specifier: ^9.15.0
@@ -280,6 +291,15 @@ importers:
       vite:
         specifier: ^5.4.10
         version: 5.4.11(@types/node@22.9.0)
+
+  packages/vite-plugin-qiankun:
+    dependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      vite-plugin-qiankun:
+        specifier: ^1.0.15
+        version: 1.0.15(patch_hash=bkqp6e2mb6oll2e4tkjbxuryee)(typescript@5.6.3)(vite@6.0.3(@types/node@22.9.0)(jiti@1.21.6)(yaml@2.6.0))
 
 packages:
 
@@ -4967,13 +4987,13 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-qiankun@1.0.15(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0)):
+  vite-plugin-qiankun@1.0.15(patch_hash=bkqp6e2mb6oll2e4tkjbxuryee)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0)):
     dependencies:
       cheerio: 1.0.0
       typescript: 5.6.3
       vite: 5.4.11(@types/node@22.9.0)
 
-  vite-plugin-qiankun@1.0.15(typescript@5.6.3)(vite@6.0.3(@types/node@22.9.0)(jiti@1.21.6)(yaml@2.6.0)):
+  vite-plugin-qiankun@1.0.15(patch_hash=bkqp6e2mb6oll2e4tkjbxuryee)(typescript@5.6.3)(vite@6.0.3(@types/node@22.9.0)(jiti@1.21.6)(yaml@2.6.0)):
     dependencies:
       cheerio: 1.0.0
       typescript: 5.6.3

@@ -1,0 +1,32 @@
+diff --git a/dist/index.js b/dist/index.js
+index 0e697dc98708e98e2bc8bd931e50d58d49fe0d50..b156179b109b7ac79907e2f7f420300bf26a1704 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -51,7 +51,10 @@ var htmlPlugin = function (qiankunName, microOption) {
+             appendBase = '(window.proxy ? (window.proxy.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + \'..\') : \'\') + ';
+         }
+         script$.removeAttr('src');
+-        script$.removeAttr('type');
++        // 开发模式下 移除 type 属性
++        if (microOption.useDevMode && !isProduction) {
++            script$.removeAttr('type');
++        }
+         script$.html("import(" + appendBase + "'" + moduleSrc + "')");
+         return script$;
+     };
+diff --git a/es/index.js b/es/index.js
+index 584c1e148605300a9029ca9cd92dbeacb3b3238a..b417af5d8ca98858cbbdc3ef3e5dafbe9370e76a 100644
+--- a/es/index.js
++++ b/es/index.js
+@@ -45,7 +45,10 @@ var htmlPlugin = function (qiankunName, microOption) {
+             appendBase = '(window.proxy ? (window.proxy.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + \'..\') : \'\') + ';
+         }
+         script$.removeAttr('src');
+-        script$.removeAttr('type');
++        // 开发模式下 移除 type 属性
++        if (microOption.useDevMode && !isProduction) {
++            script$.removeAttr('type');
++        }
+         script$.html("import(" + appendBase + "'" + moduleSrc + "')");
+         return script$;
+     };

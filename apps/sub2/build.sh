@@ -1,0 +1,1 @@
+docker build -t microfe-sub2:latest .
